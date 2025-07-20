@@ -1,6 +1,4 @@
-package com.vedazpushapp; // Your package name
-
-// Import your app's main activity and resources
+package com.vedazpushapp;
 import com.vedazpushapp.MainActivity;
 import com.vedazpushapp.R;
 
