@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "209593417121",
+    "project_id": "vedazpushapp-b1f21",
+    "storage_bucket": "vedazpushapp-b1f21.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209593417121:android:94c617a9a64e3739b65fe0",
+        "android_client_info": {
+          "package_name": "com.vedazpushapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOg75j1go-IdBfdx6Ra_Ru-zCBx7Xn1to"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
