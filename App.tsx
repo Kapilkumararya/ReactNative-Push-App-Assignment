@@ -3,7 +3,6 @@ import {View, Text, Alert, StyleSheet} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 
 const App = () => {
-  // Function to request permission for notifications (for Android 13+)
   const requestUserPermission = async () => {
     const authStatus = await messaging().requestPermission();
     const enabled =
@@ -16,22 +15,14 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Request permission on app start
     requestUserPermission();
-
-    // Get the FCM token for the device
     messaging()
       .getToken()
       .then(token => {
         console.log('FCM Token:', token);
-        // IMPORTANT: In a real app, you would send this token to your backend server.
-        // The backend uses this token to send notifications to this specific device.
         Alert.alert('FCM Token', token);
       });
 
-    // --- Handling Notification Interactions ---
-
-    // 1. When the app is killed and opened by a notification
     messaging()
       .getInitialNotification()
       .then(remoteMessage => {
@@ -40,7 +31,6 @@ const App = () => {
             'Notification caused app to open from quit state:',
             remoteMessage.notification,
           );
-          // (BONUS) Handle deep linking
           if (remoteMessage.data && remoteMessage.data.screen) {
             Alert.alert(
               'Deep Link from Killed State',
@@ -49,14 +39,11 @@ const App = () => {
           }
         }
       });
-
-    // 2. When the app is in the background and opened by a notification
     messaging().onNotificationOpenedApp(remoteMessage => {
       console.log(
         'Notification caused app to open from background state:',
         remoteMessage.notification,
       );
-      // (BONUS) Handle deep linking
       if (remoteMessage.data && remoteMessage.data.screen) {
         Alert.alert(
           'Deep Link from Background',
@@ -65,7 +52,6 @@ const App = () => {
       }
     });
 
-    // 3. When the app is in the foreground
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log('A new FCM message arrived in foreground!', remoteMessage);
       Alert.alert(
